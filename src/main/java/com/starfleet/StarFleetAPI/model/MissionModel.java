@@ -1,5 +1,6 @@
 package com.starfleet.StarFleetAPI.model;
 
+import com.starfleet.StarFleetAPI.model.dto.MissionDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -14,12 +15,21 @@ public class MissionModel {
 
     private String name;
     private String goal;  //CHANGE TYPE IN DB
-    private String status;
+    private String status; // 'PLANNED', 'IN PROGRESS', 'COMPLETED', 'FAIL'
     private LocalDate start_date;
     private LocalDate end_date;
     private Long starship_id;
 
     public MissionModel() {}
+
+    public MissionModel(MissionDto dto) {
+        name = dto.name();
+        goal = dto.goal();
+        status = dto.status();
+        start_date = dto.start_date();
+        end_date = dto.end_date();
+        starship_id = dto.starship_id();
+    }
 
     public Long getMission_id() {
         return mission_id;

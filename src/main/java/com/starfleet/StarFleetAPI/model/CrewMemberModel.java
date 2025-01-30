@@ -1,5 +1,6 @@
 package com.starfleet.StarFleetAPI.model;
 
+import com.starfleet.StarFleetAPI.model.dto.CrewMemberDto;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +20,16 @@ public class CrewMemberModel {
     private String role;
 
     public CrewMemberModel(){}
+
+    public CrewMemberModel(CrewMemberDto dto) {
+        name = dto.name();
+        rank = dto.rank();
+        species = dto.species();
+        age = dto.age();
+        starship_id = dto.starship_id();
+        photo_url = dto.photo_url();
+        role = dto.role();
+    }
 
     public Long getMember_id() {
         return member_id;
